@@ -16,7 +16,7 @@
         #define VECTOR3_ID 0
         //データ形式をメッセージ型に入れる。
         //(名称が長いのでtypedefで改名すればよい)
-        typedef Message<Vector3_t,VECTOR3_ID> Vector3;
+        typedef sb::Message<Vector3_t,VECTOR3_ID> Vector3;
     
     使い方(受送信データはdata.data.以下に読み書きされる):
         Vector3 msg;
@@ -29,6 +29,9 @@
 #define SERIAL_BRIDGE_MESSAGE_H_
 
 #include <stdlib.h>
+
+namespace sb //SerialBridge's namespace
+{
 
 class _Message
 {
@@ -64,6 +67,8 @@ public:
     {
         return (msgid_t)MESSAGE_ID;
     }
+};
+
 };
 
 #endif

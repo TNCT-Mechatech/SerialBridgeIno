@@ -21,10 +21,10 @@ public:
     SerialBridge(HardwareSerial *dev);
 
     void wait_host(String device_name);
-    void add_msg(_Message *str);
+    void add_msg(sb::_Message *str);
 
     int read();
-    void write(frame_id id, _Message *str);
+    void write(frame_id id, sb::_Message *str);
 
 protected:
     enum
@@ -40,7 +40,7 @@ protected:
     } ctrl_char_t;
 
 private:
-    _Message *_str[STRUCT_MAX_NUM];
+    sb::_Message *_str[STRUCT_MAX_NUM];
     uint8_t _str_num;
     uint8_t _max_data_size;
 

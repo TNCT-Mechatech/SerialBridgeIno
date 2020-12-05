@@ -7,6 +7,7 @@
 #######################################
 
 SerialBridge	KEYWORD1
+sb	KEYWORD1
 Message	KEYWORD1
 _Message	KEYWORD1
 

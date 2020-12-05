@@ -13,7 +13,7 @@ void SerialBridge::wait_host(String device_name)
     _wait_host(device_name);
 }
 
-void SerialBridge::add_msg(_Message *str)
+void SerialBridge::add_msg(sb::_Message *str)
 {
     if (str != NULL && _str_num <= STRUCT_MAX_NUM){
         _str[_str_num] = str;
@@ -59,7 +59,7 @@ int SerialBridge::read()
     return -1;
 }
 
-void SerialBridge::write(frame_id id, _Message *str)
+void SerialBridge::write(SerialBridge::frame_id id, sb::_Message *str)
 {
     int data_sum = 0;
     _write_once(HEADER, &data_sum);
