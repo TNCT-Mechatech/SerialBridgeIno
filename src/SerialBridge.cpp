@@ -76,12 +76,8 @@ void SerialBridge::write(SerialBridge::frame_id id, sb::_Message *str)
 
 void SerialBridge::_wait_host(String device_name)
 {
-    char res[3] = {};
-    while (strcmp(res, "OK")){
-        Serial.print(device_name);
-        Serial.print("\n");
-        Serial.readBytesUntil('\n', res, 3);
-    }
+    while (!_dev->findUntil("OK", "\n"))
+        _dev->println(device_name);
 }
 
 inline void SerialBridge::_write_once(uint8_t c, int *data_sum){
