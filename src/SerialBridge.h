@@ -21,8 +21,8 @@ public:
     SerialBridge(HardwareSerial *dev);
 
     void wait_host(String device_name);
-    void add_msg(sb::_Message *str);
 
+    void add_msg(frame_id id, sb::_Message *str);
     int read();
     void write(frame_id id, sb::_Message *str);
 
@@ -41,7 +41,6 @@ protected:
 
 private:
     sb::_Message *_str[STRUCT_MAX_NUM];
-    uint8_t _str_num;
     uint8_t _max_data_size;
 
     HardwareSerial *_dev;

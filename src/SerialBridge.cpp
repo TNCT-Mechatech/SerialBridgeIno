@@ -4,7 +4,6 @@
 SerialBridge::SerialBridge(HardwareSerial *dev)
 {
     _dev = dev;
-    _str_num = 0;
     _max_data_size = 0;
 }
 
@@ -13,13 +12,13 @@ void SerialBridge::wait_host(String device_name)
     _wait_host(device_name);
 }
 
-void SerialBridge::add_msg(sb::_Message *str)
+void SerialBridge::add_msg(SerialBridge::frame_id id, sb::_Message *str)
 {
-    if (str != NULL && _str_num <= STRUCT_MAX_NUM){
-        _str[_str_num] = str;
+    if (str != NULL && _str[id] == NULL && id <= STRUCT_MAX_NUM)
+    {
+        _str[id] = str;
         if (_max_data_size < str->size())
             _max_data_size = str->size();
-        _str_num++;
     }
 }
 
@@ -35,7 +34,7 @@ int SerialBridge::read()
 
         frame_id id = _read_once(&data_sum);
 
-        if (id >= _str_num)
+        if (_str[id] == NULL)
             return -3;
         
         if (_read_once(&data_sum) != _str[id]->msg_id())
