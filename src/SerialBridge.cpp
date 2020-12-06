@@ -12,7 +12,7 @@ void SerialBridge::wait_host(String device_name)
     _wait_host(device_name);
 }
 
-void SerialBridge::add_msg(SerialBridge::frame_id id, sb::_Message *str)
+void SerialBridge::add_frame(SerialBridge::frame_id id, sb::_Message *str)
 {
     if (str != NULL && _str[id] == NULL && id <= STRUCT_MAX_NUM)
     {

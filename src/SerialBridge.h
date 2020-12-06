@@ -22,7 +22,7 @@ public:
 
     void wait_host(String device_name);
 
-    void add_msg(frame_id id, sb::_Message *str);
+    void add_frame(frame_id id, sb::_Message *str);
     int read();
     void write(frame_id id, sb::_Message *str);
 
