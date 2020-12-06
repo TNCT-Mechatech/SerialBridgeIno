@@ -20,6 +20,11 @@ public:
 
     SerialBridge(HardwareSerial *dev);
 
+    ~SerialBridge()
+    {
+        delete[] _str;
+    }
+
     void wait_host(String device_name);
 
     void add_frame(frame_id id, sb::_Message *str);
