@@ -30,7 +30,7 @@
 
 #include <stdlib.h>
 
-namespace sb //SerialBridge's namespace
+namespace sb    //SerialBridge's namespace
 {
 
 class _Message
