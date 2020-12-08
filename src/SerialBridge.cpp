@@ -40,10 +40,8 @@ int SerialBridge::read()
         if (_read_once(&data_sum) != _str[id]->msg_id())
             return -4;
 
-        for (int i = 0; i < _str[id]->size(); i++){
-            uint8_t c;
-            _str[id]->ptr()[i] = _read_once(&data_sum);
-        }
+        for (int i = 0; i < _str[id]->size(); i++)
+            _str[id]->ptr()[i] = _read_once(&data_sum)
 
         check_sum = _dev->read();
 
