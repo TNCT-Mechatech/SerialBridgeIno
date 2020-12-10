@@ -15,6 +15,8 @@ Vector3 msg1;
 
 void setup()
 {
+    pinMode(13, OUTPUT);
+    digitalWrite(13, LOW);
     Serial.begin(9600);
 
     dev.add_frame(0, &msg1);
@@ -30,7 +32,8 @@ void loop()
 
     dev.write(0, &msg0);
 
-    dev.read();
+    if(dev.read() == 0) //受信に成功すれば0を返す。
+        digitalWrite(13, HIGH);
 
     delay(20);
 }
