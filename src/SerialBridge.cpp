@@ -1,7 +1,7 @@
 #include "SerialBridge.h"
 
 
-SerialBridge::SerialBridge(HardwareSerial *dev)
+SerialBridge::SerialBridge(Stream *dev)
 {
     _dev = dev;
     _max_data_size = 0;
