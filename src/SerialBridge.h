@@ -18,12 +18,7 @@ class SerialBridge
 public:
     typedef uint8_t frame_id;
 
-    SerialBridge(HardwareSerial *dev);
-
-    ~SerialBridge()
-    {
-        delete[] _str;
-    }
+    SerialBridge(Stream *dev);
 
     void wait_host(String device_name);
 
@@ -48,7 +43,7 @@ private:
     sb::_Message *_str[STRUCT_MAX_NUM];
     uint8_t _max_data_size;
 
-    HardwareSerial *_dev;
+    Stream *_dev;
 
     void _wait_host(String device_name);
     inline void _write_once(uint8_t c, int *data_sum);
